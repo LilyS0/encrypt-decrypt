@@ -1,6 +1,6 @@
 #import
 import random
-import string
+from utils import *
 
 ALPHA_NUM = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 MAX_KEY_SIZE = 100
@@ -17,40 +17,28 @@ def create_key(message: str) -> str:
   return ''.join((random.choice(ALPHA_NUM) for _ in message))
   
 
-def get_values(message: str) -> list:
-  
-  #returns a list of the ascii values of a string
-  return (ord(i) for i in message)
-
-
-
-def combine_lists(list1: list, list2: list) -> list:
-
-  #returns a list where each value is the combined value of every index in the two input lists
-  return [((x + y)%126) for x,y in zip(list1, list2)]
-
-def list_to_word(values_list: list) -> str:
-
-  #returns a string that has the characters of each ascii value in the values_list at the corresponding index
-  return ''.join(chr(i) for i in values_list)
-
 def encrypt_word(message: str) -> tuple:
+
+  """
+  Needs to be updated to support messages that are longer than the key
+  """
 
   #creates the key
   key = create_key(message)
 
+  #creates integer lists from message and key
+  key_values = get_values(key)
+  message_values = get_values(message)
+
+  #adds the values at each index and puts it in a list
+  combined_values = add_lists(key_values, message_values)
+
+  #creates a string from the values of the combined lists
+  result = list_to_word(combined_values)
+
   #returns key and encrypted word
-  return key, list_to_word(combine_lists(get_values(key), get_values(message)))
+  return key, result
 
-
-def main():
-  word = "hello"
-  key, cypher_text = encrypt_word(word)
-
-  print("Key: ", key, "\nEncrypted word: ", cypher_text)
-
-if __name__ == "__main__":
-  main()
 
 
   
