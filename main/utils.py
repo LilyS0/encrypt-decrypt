@@ -1,7 +1,7 @@
 def get_values(message: str) -> list:
   
     #returns a list of the ascii values of a string
-    return (ord(i) for i in message)
+    return [ord(i) for i in message]
 
 def add_lists(list1: list, list2: list) -> list:
 

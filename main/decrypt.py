@@ -14,7 +14,7 @@ def decrypt_word(key: str, message: str):
   
   else:
 
-    num = len(message)/len(key)
+    num = int(len(message)/len(key))
     full_key_values = key_values*num
     subtracted_list = subtract_lists(message_values, full_key_values)
 

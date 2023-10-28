@@ -3,7 +3,7 @@ import random
 from utils import *
 
 ALPHA_NUM = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-MAX_KEY_SIZE = 20
+MAX_KEY_SIZE = 5
 
 #function to create a key by adding random letters to a string
 def create_key(message: str) -> str:
@@ -30,8 +30,6 @@ def encrypt_word(message: str) -> tuple:
   #creates the key
   key = create_key(message)
 
-  
-
   #creates integer lists from message and key
   key_values = get_values(key)
   message_values = get_values(message)
@@ -41,7 +39,7 @@ def encrypt_word(message: str) -> tuple:
     combined_values = add_lists(key_values, message_values)
   
   else:
-    num = len(message)/len(key)
+    num = int(len(message)/len(key))
     full_key_values = key_values*num
     combined_values = add_lists(full_key_values, message_values)
 
@@ -50,10 +48,3 @@ def encrypt_word(message: str) -> tuple:
 
   #returns key and encrypted word
   return key, result
-
-
-
-
-  
-
- 
