@@ -4,22 +4,14 @@ import string
 
 #function to create a key by adding random letters to a string
 def createKey(message: str):
-  #starts a string of random numbers
-  randomLetter= ('')
 
-  #creates a list of random letters
-  list1 = [randomLetter]
-  for _ in message:
-
-    #gets random letter
-    randomLetter= random.choice('abcdefghijklmnopqrstuvwxyz')
-    
-    #adding each random letter to the list
-    list1.append(randomLetter)
-    #joins the list
-    decoderKey = ''.join(list1)
+    #creates a list of random letters
+    key_list = (random.choice('abcdefghijklmnopqrstuvwxyz') for _ in message)
   
-  return decoderKey
+    #joins the list
+    key = ''.join(key_list)
+  
+    return key
   
 def getValues(x):
   #dict to turn letters into values working wierd? not correct values
@@ -58,9 +50,8 @@ def encryptedWord (x):
 
   return finalWord
 
-def encryptFunction():
-#the message to be encrypted
-  baseWord = input("Enter your message to be encrpyted: ")
+def encryptFunction(baseWord):
+
 
 #takes out spaces
   newBaseWord = baseWord.replace(" ","" )
@@ -73,7 +64,5 @@ def encryptFunction():
 
   encryptedWordList = combinedLists(baseWordValues, keyValues)
 
-
-  print('your key is '+ key)
-
-  print('Your Encrpyted Word is ' + encryptedWord(encryptedWordList))   
+  return key, encryptedWord(encryptedWordList)
+ 

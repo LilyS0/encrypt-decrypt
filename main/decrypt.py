@@ -43,10 +43,7 @@ def decryptedWord(numberList):
   return finalWord
 
 #function that uses all previous functions to decrypt a word 
-def decryptFunction():
-  #imputs
-  encryptedWord = input('Enter encrypted word: ')
-  key = input('Enter the key: ')
+def decryptFunction(key, encryptedWord):
 
   #get values of the encrypted word and key
   encryptWordValues = getValues(encryptedWord)
@@ -58,4 +55,4 @@ def decryptFunction():
   #converts the numbers from the list above into the decrypted word
   finalWord = decryptedWord(combinedList)
 
-  print ('The decrypted message is: ' + finalWord)
+  return finalWord
