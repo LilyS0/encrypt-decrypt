@@ -1,10 +1,10 @@
-from main.encrypt import encryptFunction
+from main.encrypt import encrypt_word
 from main.decrypt import decryptFunction
 
 
 def test_encrypt_decrypt_just_text_all_lower():
     message = "helloworld"
-    key, cypher_text = encryptFunction(message)
+    key, cypher_text = encrypt_word(message)
     output = decryptFunction(key, cypher_text)
 
     assert message == output
