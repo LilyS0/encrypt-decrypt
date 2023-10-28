@@ -35,4 +35,9 @@ def find_highest_factor(num: int) -> int:
         if num%i == 0 and i > result and i != num:
             result = i
     
+    #if lenght is prime it will just return the number instead of 1
+    if result == 1:
+        return num
+    
     return result
+
