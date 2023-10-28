@@ -30,24 +30,27 @@ def encrypt_word(message: str) -> tuple:
   #creates the key
   key = create_key(message)
 
+  
+
+  #creates integer lists from message and key
+  key_values = get_values(key)
+  message_values = get_values(message)
+
   if(len(key) == len(message)):
-
-    #creates integer lists from message and key
-    key_values = get_values(key)
-    message_values = get_values(message)
-
     #adds the values at each index and puts it in a list
     combined_values = add_lists(key_values, message_values)
-
-    #creates a string from the values of the combined lists
-    result = list_to_word(combined_values)
-
-    #returns key and encrypted word
-    return key, result
-
+  
   else:
-    #repeate the key len(message)/len(key) times over the message to encrypt
-    pass
+    num = len(message)/len(key)
+    full_key_values = key_values*num
+    combined_values = add_lists(full_key_values, message_values)
+
+  #creates a string from the values of the combined lists
+  result = list_to_word(combined_values)
+
+  #returns key and encrypted word
+  return key, result
+
 
 
 
