@@ -24,3 +24,15 @@ def make_positive(num: int) -> int:
     if num < 0:
         return num + 126
     return num
+
+def find_highest_factor(num: int) -> int:
+
+    #initialize result
+    result = 0
+
+    #loop through every number 1-num to find the highest factor that is not itself
+    for i in range(1, num+1):
+        if num%i == 0 and i > result and i != num:
+            result = i
+    
+    return result
