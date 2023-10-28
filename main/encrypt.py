@@ -2,16 +2,24 @@
 import random
 import string
 
-#function to create a key by adding random letters to a string
-def createKey(message: str):
+ALPHA_NUM = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+MAX_KEY_SIZE = 100
 
-    #creates a list of random letters
-    key_list = (random.choice('abcdefghijklmnopqrstuvwxyz') for _ in message)
+#function to create a key by adding random letters to a string
+def createKey(message: str) -> str:
+
+  """
+  Right now it makes a key that is the same size as the message,
+  in the future make it so that if the key size is limited by MAX_KEY_SIZE
+  """
+
+  #creates a list of random letters
+  key_list = (random.choice(ALPHA_NUM) for _ in message)
   
-    #joins the list
-    key = ''.join(key_list)
+  #joins the list
+  key = ''.join(key_list)
   
-    return key
+  return key
   
 def getValues(x):
   #dict to turn letters into values working wierd? not correct values
