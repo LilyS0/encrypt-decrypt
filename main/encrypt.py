@@ -34,14 +34,11 @@ def encrypt_word(message: str) -> tuple:
   key_values = get_values(key)
   message_values = get_values(message)
 
-  if(len(key) == len(message)):
-    #adds the values at each index and puts it in a list
-    combined_values = add_lists(key_values, message_values)
-  
-  else:
-    num = int(len(message)/len(key))
-    full_key_values = key_values*num
-    combined_values = add_lists(full_key_values, message_values)
+  #number of times to repeat key over message, if len of key == len of message it will be 1
+  num = int(len(message)/len(key))
+
+  #combined list
+  combined_values = add_lists(key_values*num, message_values)
 
   #creates a string from the values of the combined lists
   result = list_to_word(combined_values)

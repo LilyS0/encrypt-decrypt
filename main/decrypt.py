@@ -7,16 +7,11 @@ def decrypt_word(key: str, message: str):
   key_values = get_values(key)
   message_values = get_values(message)
 
-  if(len(key) == len(message)):
+  #number of times to repeat key over message
+  num = int(len(message)/len(key))
 
-    #subtract the two lists index by index
-    subtracted_list = subtract_lists(message_values, key_values)
-  
-  else:
-
-    num = int(len(message)/len(key))
-    full_key_values = key_values*num
-    subtracted_list = subtract_lists(message_values, full_key_values)
+  #combined list
+  subtracted_list = subtract_lists(message_values, key_values*num)
 
   #turns subtracted list into word
   result = list_to_word(subtracted_list)
